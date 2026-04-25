@@ -11,6 +11,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nobut")
 
+[node name="SceneWorld" type="Node3D" parent="."]
+
 [node name="RaceViewportHost" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -21,11 +23,13 @@ grow_vertical = 2
 
 [node name="RaceViewport" type="SubViewport" parent="RaceViewportHost"]
 handle_input_locally = false
-own_world_3d = true
 render_target_update_mode = 4
 size = Vector2i(1600, 900)
 
-[node name="WorldRoot" type="Node3D" parent="RaceViewportHost/RaceViewport"]
+[node name="SingleCameraRoot" type="Node3D" parent="RaceViewportHost/RaceViewport"]
+
+[node name="SingleCamera" type="Camera3D" parent="RaceViewportHost/RaceViewport/SingleCameraRoot"]
+fov = 68.0
 
 [node name="HUDPanel" type="PanelContainer" parent="."]
 offset_left = 22.0
@@ -97,6 +101,95 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "ESC — пауза, R — нитро."
 autowrap_mode = 3
+
+[node name="CoopLayer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplitMargin" type="MarginContainer" parent="CoopLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="SplitStack" type="VBoxContainer" parent="CoopLayer/SplitMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PlayerOnePane" type="Control" parent="CoopLayer/SplitMargin/SplitStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerOneViewportHost" type="SubViewportContainer" parent="CoopLayer/SplitMargin/SplitStack/PlayerOnePane"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerOneViewport" type="SubViewport" parent="CoopLayer/SplitMargin/SplitStack/PlayerOnePane/PlayerOneViewportHost"]
+handle_input_locally = false
+render_target_update_mode = 4
+size = Vector2i(1600, 450)
+
+[node name="PlayerOneCameraRoot" type="Node3D" parent="CoopLayer/SplitMargin/SplitStack/PlayerOnePane/PlayerOneViewportHost/PlayerOneViewport"]
+
+[node name="PlayerOneCamera" type="Camera3D" parent="CoopLayer/SplitMargin/SplitStack/PlayerOnePane/PlayerOneViewportHost/PlayerOneViewport/PlayerOneCameraRoot"]
+fov = 68.0
+
+[node name="PlayerOneHudAnchor" type="Control" parent="CoopLayer/SplitMargin/SplitStack/PlayerOnePane"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerTwoPane" type="Control" parent="CoopLayer/SplitMargin/SplitStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerTwoViewportHost" type="SubViewportContainer" parent="CoopLayer/SplitMargin/SplitStack/PlayerTwoPane"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerTwoViewport" type="SubViewport" parent="CoopLayer/SplitMargin/SplitStack/PlayerTwoPane/PlayerTwoViewportHost"]
+handle_input_locally = false
+render_target_update_mode = 4
+size = Vector2i(1600, 450)
+
+[node name="PlayerTwoCameraRoot" type="Node3D" parent="CoopLayer/SplitMargin/SplitStack/PlayerTwoPane/PlayerTwoViewportHost/PlayerTwoViewport"]
+
+[node name="PlayerTwoCamera" type="Camera3D" parent="CoopLayer/SplitMargin/SplitStack/PlayerTwoPane/PlayerTwoViewportHost/PlayerTwoViewport/PlayerTwoCameraRoot"]
+fov = 68.0
+
+[node name="PlayerTwoHudAnchor" type="Control" parent="CoopLayer/SplitMargin/SplitStack/PlayerTwoPane"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CountdownLabel" type="Label" parent="."]
 layout_mode = 1

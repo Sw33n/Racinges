@@ -5,6 +5,7 @@ const MODE_SELECT_SCREEN := preload("res://scenes/ui/mode_select_screen.tscn")
 const GARAGE_SCREEN := preload("res://scenes/ui/garage_screen.tscn")
 const DIFFICULTY_SELECT_SCREEN := preload("res://scenes/ui/difficulty_select_screen.tscn")
 const CAR_SELECT_SCREEN := preload("res://scenes/ui/car_select_screen.tscn")
+const COOP_PREP_SCREEN := preload("res://scenes/ui/coop_prep_screen.tscn")
 const RACE_SESSION_SCREEN := preload("res://scenes/race/race_session_screen.tscn")
 const RESULTS_SCREEN := preload("res://scenes/ui/results_screen.tscn")
 const UIPalette = preload("res://scripts/ui/ui_palette.gd")
@@ -15,6 +16,7 @@ var _screen_registry := {
 	"garage": GARAGE_SCREEN,
 	"difficulty_select": DIFFICULTY_SELECT_SCREEN,
 	"car_select": CAR_SELECT_SCREEN,
+	"coop_prep": COOP_PREP_SCREEN,
 	"race_session": RACE_SESSION_SCREEN,
 	"results": RESULTS_SCREEN,
 }

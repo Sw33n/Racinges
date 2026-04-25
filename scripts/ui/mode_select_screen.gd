@@ -103,7 +103,7 @@ func _apply_mode_card(
 			accent_color,
 			accent_color.darkened(0.08)
 		)
-		action_button.text = "Открыть" if action_button == _ai_action_button else "Скоро"
+		action_button.text = "Открыть"
 	else:
 		UIPalette.apply_button_style(
 			action_button,
@@ -111,9 +111,9 @@ func _apply_mode_card(
 			accent_color.darkened(0.22),
 			accent_color.darkened(0.32)
 		)
-		action_button.text = "Выбрать" if action_button == _ai_action_button else "Скоро"
+		action_button.text = "Выбрать"
 
-	action_button.disabled = action_button == _coop_action_button
+	action_button.disabled = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -135,3 +135,4 @@ func _on_ai_action_pressed() -> void:
 func _on_coop_action_pressed() -> void:
 	_focus_mode = "local_coop"
 	_refresh_focus_state()
+	screen_change_requested.emit("coop_prep", {})

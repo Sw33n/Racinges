@@ -55,12 +55,18 @@ func _connect_actions() -> void:
 
 
 func _render_context() -> void:
+	var mode := String(_context.get("mode", "ai"))
+	if mode == "local_coop":
+		_render_local_coop_results()
+		return
+
 	var place := int(_context.get("player_position", 1))
 	var difficulty_name := String(_context.get("difficulty_name", RaceDifficultyCatalog.get_by_id("normal")["name"]))
 	var player_time := _format_time(float(_context.get("player_time", 0.0)))
 	var ai_time := _format_time(float(_context.get("ai_time", -1.0)))
 	var ai_finished := bool(_context.get("ai_finished", true))
 
+	_header_tag.text = "РЕЗУЛЬТАТ"
 	_result_title.text = "Победа" if place == 1 else "Финиш на втором месте"
 	_summary_label.text = "Одиночный заезд против ИИ завершён. Можно сразу перезапустить с тем же пресетом или вернуться в меню."
 
@@ -73,6 +79,25 @@ func _render_context() -> void:
 	_add_detail_row("Ваше время", player_time, UIPalette.ACCENT_GREEN)
 	_add_detail_row("Время ИИ", ai_time if ai_finished else "Не финишировал", UIPalette.ACCENT_GOLD)
 	_add_detail_row("Позиция", "%d / 2" % place, UIPalette.TEXT_PRIMARY)
+
+
+func _render_local_coop_results() -> void:
+	var winner_label := String(_context.get("winner_label", "Ничья"))
+	var player_one_time := _format_time(float(_context.get("player_one_time", -1.0)))
+	var player_two_time := _format_time(float(_context.get("player_two_time", -1.0)))
+
+	_header_tag.text = "ЛОКАЛЬНЫЙ КООП"
+	_result_title.text = "Победа %s" % winner_label if winner_label != "Ничья" else "Фотофиниш"
+	_summary_label.text = "Split-screen заезд завершён. Можно сразу повторить старт теми же машинами или вернуться в главное меню."
+
+	for child in _detail_list.get_children():
+		child.queue_free()
+
+	_add_detail_row("Победитель", winner_label, UIPalette.ACCENT_GREEN if winner_label != "Ничья" else UIPalette.ACCENT_GOLD)
+	_add_detail_row("Машина P1", String(_context.get("player_one_car_name", "Unknown")), UIPalette.ACCENT_ORANGE)
+	_add_detail_row("Время P1", player_one_time, UIPalette.ACCENT_ORANGE)
+	_add_detail_row("Машина P2", String(_context.get("player_two_car_name", "Unknown")), UIPalette.ACCENT_CYAN)
+	_add_detail_row("Время P2", player_two_time, UIPalette.ACCENT_CYAN)
 
 
 func _add_detail_row(label_text: String, value_text: String, accent: Color) -> void:
