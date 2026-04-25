@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/results_screen.gd" id="1_2qk7v"]
+
+[node name="ResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qk7v")
+
+[node name="RootLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -220.0
+offset_right = 340.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="HeaderTag" type="Label" parent="RootLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "РЕЗУЛЬТАТ"
+
+[node name="ResultsCard" type="PanelContainer" parent="RootLayout"]
+layout_mode = 2
+
+[node name="CardPadding" type="MarginContainer" parent="RootLayout/ResultsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CardColumn" type="VBoxContainer" parent="RootLayout/ResultsCard/CardPadding"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ResultTitle" type="Label" parent="RootLayout/ResultsCard/CardPadding/CardColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+text = "Победа"
+
+[node name="SummaryLabel" type="Label" parent="RootLayout/ResultsCard/CardPadding/CardColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Короткая сводка заезда."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DetailList" type="VBoxContainer" parent="RootLayout/ResultsCard/CardPadding/CardColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ActionsRow" type="HBoxContainer" parent="RootLayout/ResultsCard/CardPadding/CardColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RestartButton" type="Button" parent="RootLayout/ResultsCard/CardPadding/CardColumn/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ещё раз"
+
+[node name="MenuButton" type="Button" parent="RootLayout/ResultsCard/CardPadding/CardColumn/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "В меню"
