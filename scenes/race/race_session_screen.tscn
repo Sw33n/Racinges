@@ -1,0 +1,180 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/race_session_screen.gd" id="1_nobut"]
+
+[node name="RaceSessionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nobut")
+
+[node name="RaceViewportHost" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RaceViewport" type="SubViewport" parent="RaceViewportHost"]
+handle_input_locally = false
+own_world_3d = true
+render_target_update_mode = 4
+size = Vector2i(1600, 900)
+
+[node name="WorldRoot" type="Node3D" parent="RaceViewportHost/RaceViewport"]
+
+[node name="HUDPanel" type="PanelContainer" parent="."]
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 390.0
+offset_bottom = 274.0
+
+[node name="HudPadding" type="MarginContainer" parent="HUDPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="HudColumn" type="VBoxContainer" parent="HUDPanel/HudPadding"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TopRow" type="HBoxContainer" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SpeedValue" type="Label" parent="HUDPanel/HudPadding/HudColumn/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Скорость: 000 км/ч"
+
+[node name="PositionValue" type="Label" parent="HUDPanel/HudPadding/HudColumn/TopRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 2
+text = "Позиция: 1 / 2"
+
+[node name="DifficultyValue" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Сложность: Средняя"
+
+[node name="LapValue" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Круг: 1 / 3"
+
+[node name="ProgressValue" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Чекпоинт: 0 / 5"
+
+[node name="TimerValue" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Таймер: 00:00.00"
+
+[node name="NitroLabel" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Нитро: 100% (R)"
+
+[node name="NitroBar" type="ProgressBar" parent="HUDPanel/HudPadding/HudColumn"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="StatusValue" type="Label" parent="HUDPanel/HudPadding/HudColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "ESC — пауза, R — нитро."
+autowrap_mode = 3
+
+[node name="CountdownLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -64.0
+offset_right = 140.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 92
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "3"
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0313725, 0.0509804, 0.72)
+
+[node name="PauseCenter" type="CenterContainer" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseCard" type="PanelContainer" parent="PauseOverlay/PauseCenter"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="PausePadding" type="MarginContainer" parent="PauseOverlay/PauseCenter/PauseCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="PauseColumn" type="VBoxContainer" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PauseTitle" type="Label" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+text = "Пауза"
+
+[node name="PauseSubtitle" type="Label" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+text = "Продолжите заезд, перезапустите его или выйдите в меню."
+autowrap_mode = 3
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+text = "Продолжить"
+
+[node name="RestartButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+text = "Рестарт"
+
+[node name="SettingsButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+disabled = true
+text = "Настройки"
+
+[node name="MenuButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PausePadding/PauseColumn"]
+layout_mode = 2
+text = "В меню"
