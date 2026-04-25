@@ -1,0 +1,8 @@
+.godot/
+.godot-home/
+.import/
+.DS_Store
+export_presets.cfg
+AGENTS.md
+VISION.md
+docs/

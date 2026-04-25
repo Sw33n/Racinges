@@ -1,0 +1,208 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/garage_screen.gd" id="1_48mmu"]
+
+[node name="GarageScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48mmu")
+
+[node name="RootLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="HeaderTag" type="Label" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "ГАРАЖ"
+
+[node name="BackButton" type="Button" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(230, 0)
+text = "Назад в меню"
+
+[node name="ContentRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="PreviewColumn" type="VBoxContainer" parent="RootLayout/ContentRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="PreviewStage" type="PanelContainer" parent="RootLayout/ContentRow/PreviewColumn"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StagePadding" type="MarginContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="StageContent" type="VBoxContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StageTopRow" type="HBoxContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusBadge" type="PanelContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/StageTopRow"]
+layout_mode = 2
+
+[node name="StatusPadding" type="MarginContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/StageTopRow/StatusBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="StatusValue" type="Label" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/StageTopRow/StatusBadge/StatusPadding"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Доступна"
+
+[node name="SelectedRole" type="Label" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/StageTopRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Роль"
+vertical_alignment = 1
+
+[node name="PreviewArea" type="CenterContainer" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PreviewCar" type="Control" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea"]
+custom_minimum_size = Vector2(320, 160)
+layout_mode = 2
+
+[node name="PreviewBackdrop" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 292.0
+offset_bottom = 142.0
+color = Color(0.180392, 0.219608, 0.301961, 1)
+
+[node name="Shadow" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 78.0
+offset_top = 128.0
+offset_right = 276.0
+offset_bottom = 142.0
+color = Color(0, 0, 0, 0.26)
+
+[node name="AccentStripe" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 78.0
+offset_top = 96.0
+offset_right = 266.0
+offset_bottom = 106.0
+color = Color(0.992157, 0.427451, 0.223529, 1)
+
+[node name="Body" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 72.0
+offset_top = 78.0
+offset_right = 270.0
+offset_bottom = 126.0
+color = Color(0.937255, 0.380392, 0.235294, 1)
+
+[node name="Cabin" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 138.0
+offset_top = 56.0
+offset_right = 226.0
+offset_bottom = 92.0
+color = Color(0.984314, 0.756863, 0.247059, 1)
+
+[node name="FrontWheel" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 92.0
+offset_top = 120.0
+offset_right = 132.0
+offset_bottom = 152.0
+color = Color(0.0862745, 0.0980392, 0.12549, 1)
+
+[node name="RearWheel" type="ColorRect" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent/PreviewArea/PreviewCar"]
+offset_left = 210.0
+offset_top = 120.0
+offset_right = 250.0
+offset_bottom = 152.0
+color = Color(0.0862745, 0.0980392, 0.12549, 1)
+
+[node name="SelectedName" type="Label" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "BMW M3 GTR"
+
+[node name="SelectedDescription" type="Label" parent="RootLayout/ContentRow/PreviewColumn/PreviewStage/StagePadding/StageContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Описание машины"
+autowrap_mode = 3
+
+[node name="StatsCard" type="PanelContainer" parent="RootLayout/ContentRow/PreviewColumn"]
+layout_mode = 2
+
+[node name="StatsPadding" type="MarginContainer" parent="RootLayout/ContentRow/PreviewColumn/StatsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="StatsColumn" type="VBoxContainer" parent="RootLayout/ContentRow/PreviewColumn/StatsCard/StatsPadding"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatsTitle" type="Label" parent="RootLayout/ContentRow/PreviewColumn/StatsCard/StatsPadding/StatsColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Характеристики"
+
+[node name="StatsHint" type="Label" parent="RootLayout/ContentRow/PreviewColumn/StatsCard/StatsPadding/StatsColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Четыре базовых параметра машины."
+autowrap_mode = 3
+
+[node name="StatList" type="VBoxContainer" parent="RootLayout/ContentRow/PreviewColumn/StatsCard/StatsPadding/StatsColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RosterCard" type="PanelContainer" parent="RootLayout/ContentRow"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="RosterPadding" type="MarginContainer" parent="RootLayout/ContentRow/RosterCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RosterColumn" type="VBoxContainer" parent="RootLayout/ContentRow/RosterCard/RosterPadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RosterTitle" type="Label" parent="RootLayout/ContentRow/RosterCard/RosterPadding/RosterColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Машины"
+
+[node name="RosterList" type="VBoxContainer" parent="RootLayout/ContentRow/RosterCard/RosterPadding/RosterColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10

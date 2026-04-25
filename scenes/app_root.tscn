@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/app_root.gd" id="1_hy5gm"]
+
+[node name="AppRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hy5gm")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0705882, 0.101961, 1)
+
+[node name="GlowLeft" type="ColorRect" parent="."]
+offset_left = -120.0
+offset_top = -60.0
+offset_right = 520.0
+offset_bottom = 340.0
+rotation = -0.122173
+color = Color(0.992157, 0.427451, 0.223529, 0.16)
+
+[node name="GlowRight" type="ColorRect" parent="."]
+offset_left = 1160.0
+offset_top = 90.0
+offset_right = 1650.0
+offset_bottom = 470.0
+rotation = 0.10472
+color = Color(0.215686, 0.870588, 0.909804, 0.14)
+
+[node name="GlowBottom" type="ColorRect" parent="."]
+offset_left = 420.0
+offset_top = 720.0
+offset_right = 1140.0
+offset_bottom = 1080.0
+rotation = -0.0698132
+color = Color(0.968627, 0.286275, 0.501961, 0.1)
+
+[node name="AccentLine" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 104.0
+offset_bottom = 106.0
+grow_horizontal = 2
+color = Color(0.207843, 0.858824, 0.909804, 0.28)
+
+[node name="MainMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 26.0
+offset_right = -32.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RootStack" type="VBoxContainer" parent="MainMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="TopRow" type="HBoxContainer" parent="MainMargin/RootStack"]
+layout_mode = 2
+
+[node name="BrandTitle" type="Label" parent="MainMargin/RootStack/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 54
+text = "Racinges"
+
+[node name="ScreenFrame" type="PanelContainer" parent="MainMargin/RootStack"]
+layout_mode = 2
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ScreenPadding" type="MarginContainer" parent="MainMargin/RootStack/ScreenFrame"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="ScreenHost" type="Control" parent="MainMargin/RootStack/ScreenFrame/ScreenPadding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+clip_contents = true

@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/mode_select_screen.gd" id="1_q8xw2"]
+
+[node name="ModeSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8xw2")
+
+[node name="RootLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="HeaderRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Выберите режим заезда"
+
+[node name="BackButton" type="Button" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(230, 0)
+text = "Назад в меню"
+
+[node name="CardsRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="AIRaceCard" type="PanelContainer" parent="RootLayout/CardsRow"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AIRacePadding" type="MarginContainer" parent="RootLayout/CardsRow/AIRaceCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="AIRaceContent" type="VBoxContainer" parent="RootLayout/CardsRow/AIRaceCard/AIRacePadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AIRaceTitle" type="Label" parent="RootLayout/CardsRow/AIRaceCard/AIRacePadding/AIRaceContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Заезд против компьютера"
+
+[node name="AIRaceDescription" type="Label" parent="RootLayout/CardsRow/AIRaceCard/AIRacePadding/AIRaceContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Игра против машины под управлением компьютера, три уровня сложности"
+autowrap_mode = 3
+
+[node name="AIRaceActionButton" type="Button" parent="RootLayout/CardsRow/AIRaceCard/AIRacePadding/AIRaceContent"]
+layout_mode = 2
+text = "Выбрать"
+
+[node name="CoopCard" type="PanelContainer" parent="RootLayout/CardsRow"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoopPadding" type="MarginContainer" parent="RootLayout/CardsRow/CoopCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="CoopContent" type="VBoxContainer" parent="RootLayout/CardsRow/CoopCard/CoopPadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CoopTitle" type="Label" parent="RootLayout/CardsRow/CoopCard/CoopPadding/CoopContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Локальный кооп"
+
+[node name="CoopDescription" type="Label" parent="RootLayout/CardsRow/CoopCard/CoopPadding/CoopContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Два игрока на одной клавиатуре: WASD и стрелки, с отдельным выбором машин перед гонкой."
+autowrap_mode = 3
+
+[node name="CoopActionButton" type="Button" parent="RootLayout/CardsRow/CoopCard/CoopPadding/CoopContent"]
+layout_mode = 2
+text = "Выбрать"

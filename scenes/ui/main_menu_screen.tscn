@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu_screen.gd" id="1_16pn3"]
+
+[node name="MainMenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_16pn3")
+
+[node name="RootLayout" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="HeroColumn" type="VBoxContainer" parent="RootLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Headline" type="Label" parent="RootLayout/HeroColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Выберите режим"
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="RootLayout/HeroColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Начните с выбора режима заезда, загляните в гараж или выйдите из игры."
+autowrap_mode = 3
+
+[node name="ActionsCard" type="PanelContainer" parent="RootLayout"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="ActionsPadding" type="MarginContainer" parent="RootLayout/ActionsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="ActionsColumn" type="VBoxContainer" parent="RootLayout/ActionsCard/ActionsPadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayButton" type="Button" parent="RootLayout/ActionsCard/ActionsPadding/ActionsColumn"]
+layout_mode = 2
+text = "Играть"
+
+[node name="GarageButton" type="Button" parent="RootLayout/ActionsCard/ActionsPadding/ActionsColumn"]
+layout_mode = 2
+text = "Гараж"
+
+[node name="SettingsButton" type="Button" parent="RootLayout/ActionsCard/ActionsPadding/ActionsColumn"]
+layout_mode = 2
+disabled = true
+text = "Настройки"
+
+[node name="ExitButton" type="Button" parent="RootLayout/ActionsCard/ActionsPadding/ActionsColumn"]
+layout_mode = 2
+text = "Выход"
