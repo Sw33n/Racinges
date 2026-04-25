@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/coop_prep_screen.gd" id="1_3od8o"]
+
+[node name="CoopPrepScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3od8o")
+
+[node name="RootLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Подготовка к локальному коопу"
+
+[node name="ModeBadge" type="PanelContainer" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+
+[node name="ModePadding" type="MarginContainer" parent="RootLayout/HeaderRow/ModeBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="ModeValue" type="Label" parent="RootLayout/HeaderRow/ModeBadge/ModePadding"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Split-screen"
+
+[node name="MenuButton" type="Button" parent="RootLayout/HeaderRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 0)
+text = "В главное меню"
+
+[node name="SummaryLabel" type="Label" parent="RootLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Подберите машины для локального коопа."
+autowrap_mode = 3
+
+[node name="ContentRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="PlayerOneCard" type="PanelContainer" parent="RootLayout/ContentRow"]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RosterCard" type="PanelContainer" parent="RootLayout/ContentRow"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="RosterPadding" type="MarginContainer" parent="RootLayout/ContentRow/RosterCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RosterColumn" type="VBoxContainer" parent="RootLayout/ContentRow/RosterCard/RosterPadding"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RosterTitle" type="Label" parent="RootLayout/ContentRow/RosterCard/RosterPadding/RosterColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Стартовый ростер"
+
+[node name="RosterHint" type="Label" parent="RootLayout/ContentRow/RosterCard/RosterPadding/RosterColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Все машины доступны."
+autowrap_mode = 3
+
+[node name="RosterList" type="VBoxContainer" parent="RootLayout/ContentRow/RosterCard/RosterPadding/RosterColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerTwoCard" type="PanelContainer" parent="RootLayout/ContentRow"]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterRow" type="BoxContainer" parent="RootLayout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StartButton" type="Button" parent="RootLayout/FooterRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+text = "Старт split-screen"
+
+[node name="FooterHint" type="Label" parent="RootLayout/FooterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Оба игрока должны быть готовы."
+autowrap_mode = 3
+vertical_alignment = 1

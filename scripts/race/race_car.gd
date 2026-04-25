@@ -10,6 +10,7 @@ const _BODY_SIZE: Vector3 = Vector3(1.75, 0.95, 3.2)
 
 var car_data: Dictionary = {}
 var is_player: bool = false
+var _ghost_mode: bool = false
 
 var _throttle_input: float = 0.0
 var _steer_input: float = 0.0
@@ -59,6 +60,7 @@ func _ready() -> void:
 func configure(car_config: Dictionary, player_controlled: bool, ghost_mode: bool = false) -> void:
 	car_data = car_config.duplicate(true)
 	is_player = player_controlled
+	_ghost_mode = ghost_mode
 
 	if is_node_ready():
 		_apply_car_setup(ghost_mode)
@@ -174,6 +176,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _apply_car_setup(ghost_mode: bool) -> void:
+	_ghost_mode = ghost_mode
+	collision_mask = 0 if _ghost_mode else 1 << 1
 	_visual.configure(car_data, ghost_mode)
 	_build_performance_profile()
 	_nitro_charge = _nitro_capacity
